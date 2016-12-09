@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import * as firebase from 'firebase';
 import playData from './playData'
+import config from './config'
 
 class App extends Component {
 
@@ -17,13 +18,7 @@ class App extends Component {
       plays: playData
     }
 
-    let config = {
-      apiKey: "AIzaSyAxyPM42OKhbH-wFPdbQcD6Rt2PeKtvjpQ",
-      authDomain: "react-1119e.firebaseapp.com",
-      databaseURL: "https://react-1119e.firebaseio.com",
-      storageBucket: "react-1119e.appspot.com",
-      messagingSenderId: "263852110059"
-    };
+    console.log(config)
     this.firebase = firebase.initializeApp(config)
 
     this.handleSubmit = this.handleSubmit.bind(this)
