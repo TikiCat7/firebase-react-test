@@ -15,7 +15,8 @@ class App extends Component {
       email: '',
       password: '',
       uid: '',
-      plays: playData
+      plays: playData,
+      loggedIn: null
     }
 
     console.log(config)
@@ -28,7 +29,7 @@ class App extends Component {
     this.handleEmailChange = this.handleEmailChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
     this.gitHubLogIn = this.gitHubLogIn.bind(this)
-    this.logIn = this.logIn.bind(this)
+    this.createAccount = this.createAccount.bind(this)
     this.signOut = this.signOut.bind(this)
     this.userWriteTest = this.userWriteTest.bind(this)
   }
@@ -50,7 +51,7 @@ class App extends Component {
     this.firebase.auth().signOut().then(()=> console.log('signed out successfully'))
   }
 
-  logIn(e) {
+  createAccount(e) {
     e.preventDefault()
     this.firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
     .then(() => console.log('success'))
@@ -125,7 +126,7 @@ class App extends Component {
         console.log(`Email Verification: ${user.emailVerified}`)
         if(user.emailVerified !== true) {
           console.log('gotta verify email')
-          user.sendEmailVerification().then(()=> console.log('verification email sent'))
+          // user.sendEmailVerification().then(()=> console.log('verification email sent'))
         }
       } else {
         console.log('not logged in')
@@ -205,8 +206,8 @@ class App extends Component {
         <div className="Posts">
           {mappedPosts}
         </div>
-        <div className="Login">
-          <form onSubmit={this.logIn} className="LoginElement">
+        <div className="createAccount">
+          <form onSubmit={this.createAccount} className="createAccountElement">
             <div>
             <label>
               Email:

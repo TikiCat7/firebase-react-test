@@ -33,13 +33,13 @@
   margin-top: 20px;
 }
 
-.Login {
+.createAccount {
   display: flex;
   padding: 20px;
   flex-direction: column;
 }
 
-.LoginElement {
+.createAccountElement {
   font-family: sans-serif;
   font-size: 16px;
   /*justify-content: space-around;*/
