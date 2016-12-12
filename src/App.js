@@ -32,6 +32,7 @@ class App extends Component {
     this.createAccount = this.createAccount.bind(this)
     this.signOut = this.signOut.bind(this)
     this.userWriteTest = this.userWriteTest.bind(this)
+    this.getMyPosts = this.getMyPosts.bind(this)
   }
 
   handlePasswordChange(e) {
@@ -134,6 +135,11 @@ class App extends Component {
     });
   }
 
+  getMyPosts(e) {
+    e.preventDefault()
+    console.log('getMyPosts pressed')
+  }
+
   gitHubLogIn(e) {
     e.preventDefault()
         // Using a redirect.
@@ -228,6 +234,9 @@ class App extends Component {
         <button onClick={this.gitHubLogIn}>Github Login</button>
         <button onClick={this.signOut}>Sign Out</button>
         <button onClick={this.userWriteTest}>Post Data (Auth required)</button>
+        <div>
+          <button onClick={this.getMyPosts}>Get My Posts (Auth Required)</button>
+        </div>
       </div>
     )
   }
