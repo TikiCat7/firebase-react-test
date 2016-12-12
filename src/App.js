@@ -16,10 +16,10 @@ class App extends Component {
       password: '',
       uid: '',
       plays: playData,
-      loggedIn: null
+      loggedIn: null,
+      uid: null
     }
 
-    console.log(config)
     this.firebase = firebase.initializeApp(config)
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -122,7 +122,8 @@ class App extends Component {
         console.log(user.providerData)
         console.log(user.uid)
         this.setState({
-          uid:user.providerData[0].uid
+          uid: user.providerData[0].uid,
+          loggedIn: true
         })
         console.log(`Email Verification: ${user.emailVerified}`)
         if(user.emailVerified !== true) {
@@ -131,6 +132,9 @@ class App extends Component {
         }
       } else {
         console.log('not logged in')
+        this.setState({
+          loggedIn: false
+        })
       }
     });
   }
@@ -149,7 +153,6 @@ class App extends Component {
         // var token = result.credential.accessToken;
       }
       var user = result.user;
-      console.log(user)
     }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
