@@ -29,6 +29,7 @@ class App extends Component {
     this.handleDeletePost = this.handleDeletePost.bind(this)
     this.handleEmailChange = this.handleEmailChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
+    handleSignIn = this.handleSignIn.bind(this)
     this.gitHubLogIn = this.gitHubLogIn.bind(this)
     this.createAccount = this.createAccount.bind(this)
     this.signOut = this.signOut.bind(this)
@@ -102,6 +103,10 @@ class App extends Component {
     this.setState({
       postName: e.target.value
     })
+  }
+
+  handleSignIn(e) {
+    e.preventDefault()
   }
 
   componentDidMount() {
@@ -206,6 +211,7 @@ class App extends Component {
         {this.state.loggedIn && <div>Logged In As: {this.state.loggedInEmail}</div>}
         <div className="PostForm">
         <form onSubmit={this.handleSubmit}>
+          Submit New Post (Auth not required)
           <label> Post:
             <input onChange={this.handleChange} value={this.state.postVal} />
           </label>
@@ -221,6 +227,7 @@ class App extends Component {
           {mappedPosts}
         </div>
         <div className="createAccount">
+          Create Account
           <form onSubmit={this.createAccount} className="createAccountElement">
             <div>
             <label>
