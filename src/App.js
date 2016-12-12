@@ -14,7 +14,6 @@ class App extends Component {
       postName: '',
       email: '',
       password: '',
-      uid: '',
       plays: playData,
       loggedIn: null,
       uid: null,
@@ -29,7 +28,7 @@ class App extends Component {
     this.handleDeletePost = this.handleDeletePost.bind(this)
     this.handleEmailChange = this.handleEmailChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
-    handleSignIn = this.handleSignIn.bind(this)
+    this.handleSignIn = this.handleSignIn.bind(this)
     this.gitHubLogIn = this.gitHubLogIn.bind(this)
     this.createAccount = this.createAccount.bind(this)
     this.signOut = this.signOut.bind(this)
@@ -159,7 +158,7 @@ class App extends Component {
         // This gives you a GitHub Access Token.
         // var token = result.credential.accessToken;
       }
-      var user = result.user;
+      // var user = result.user;
     }).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
