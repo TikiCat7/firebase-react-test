@@ -17,7 +17,8 @@ class App extends Component {
       uid: '',
       plays: playData,
       loggedIn: null,
-      uid: null
+      uid: null,
+      loggedInEmail: null
     }
 
     this.firebase = firebase.initializeApp(config)
@@ -123,7 +124,8 @@ class App extends Component {
         console.log(user.uid)
         this.setState({
           uid: user.providerData[0].uid,
-          loggedIn: true
+          loggedIn: true,
+          loggedInEmail: user.email
         })
         console.log(`Email Verification: ${user.emailVerified}`)
         if(user.emailVerified !== true) {
@@ -201,6 +203,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>NBA React Firebase Starter</h1>
+        {this.state.loggedIn && <div>Logged In As: {this.state.loggedInEmail}</div>}
+        <div className="PostForm">
         <form onSubmit={this.handleSubmit}>
           <label> Post:
             <input onChange={this.handleChange} value={this.state.postVal} />
@@ -212,6 +216,7 @@ class App extends Component {
         </div>
           <input type="submit" value="Submit" />
         </form>
+        </div>
         <div className="Posts">
           {mappedPosts}
         </div>
